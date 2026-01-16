@@ -1,70 +1,52 @@
-# Getting Started with Create React App
+# ✈️ Flight Route Planner with Algorithm Visualizer
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+An interactive React application that visualizes pathfinding algorithms (BFS and Uniform Cost Search) on a flight network. Perfect for understanding how algorithms work step-by-step through real-time animation! 
 
-## Available Scripts
+## 🎯 Features
 
-In the project directory, you can run:
+### Algorithm Visualization
+- **Breadth-First Search (BFS)** - Find routes with the fewest stops
+- **Uniform Cost Search (UCS)** - Find cheapest or fastest routes
+- Real-time step-by-step visualization of algorithm execution
+- Interactive playback controls with adjustable speed
 
-### `npm start`
+### Interactive UI
+- **Flight Network Map** - Animated D3.js visualization of the airport graph
+- **Live Status Updates** - See which airports are being explored at each step
+- **Final Results** - Detailed metrics including:
+  - Complete flight route path
+  - Total travel time
+  - Total cost
+  - Number of stops
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Playback Controls
+- ▶️ Play/Pause animation
+- ⏮️ Previous step navigation
+- ⏭️ Next step navigation
+- ⏹️ Reset visualization
+- Speed adjustment (Slow to Very Fast)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🏗️ Architecture
 
-### `npm test`
+### Core Components
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### GraphVisualization Component
+- Renders the flight network using D3.js
+- Shows real-time node and edge highlighting
+- Color-coded visualization: 
+  - 🔴 **Red** - Currently exploring vertex
+  - 🔵 **Blue** - Visited vertices
+  - 🟡 **Yellow** - Vertices in queue
+  - ⚫ **Gray** - Unvisited vertices
 
-### `npm run build`
+#### Graph Data Structure
+- **Vertex Class** - Represents airports with connections
+- **Edge Class** - Represents flights with time and price data
+- **Waypoint Class** - Tracks path history during traversal
+- **Graph Class** - Manages the network and implements algorithms
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Algorithm Implementation
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+#### BFS with Steps (Breadth-First Search)
+```javascript
+bfsWithSteps(start, destination)
